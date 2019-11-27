@@ -1,15 +1,11 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'actions-cfn-lint'
+description: 'cfn-lint with reviewdog'
+author: 'Ichinose Shogo'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  github_token:
+    description: 'set ${{ secrets.GITHUB_TOKEN }}'
     required: true
-    default: 'World'
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+outputs: {}
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
-    - ${{ inputs.who-to-greet }}
