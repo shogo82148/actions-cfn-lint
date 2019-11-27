@@ -1,8 +1,11 @@
-# Container image that runs your code
 FROM alpine:3.10
 
-# Copies your code file from your action repository to the filesystem path `/` of the container
+# install cfn-lint
+RUN apk --no-cache add python3 git && pip3 install cfn-lint
+
+# install reviewdog
+RUN wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh | sh -s -- -b /usr/local/bin/ v0.9.13
+
 COPY entrypoint.sh /entrypoint.sh
 
-# Code file to execute when the docker container starts up (`entrypoint.sh`)
 ENTRYPOINT ["/entrypoint.sh"]
