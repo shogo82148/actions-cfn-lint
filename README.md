@@ -1,23 +1,38 @@
-# Hello world docker action
+# GitHub Action for CloudFormation Linter with reviewdog
 
-This action prints "Hello World" to the log or "Hello" + the name of a person to greet. To learn how this action was built, see "[Creating a Docker container action](https://help.github.com/en/articles/creating-a-docker-container-action)" in the GitHub Help documentation.
 
 ## Inputs
 
-### `who-to-greet`
+### `github_token`
 
-**Required** The name of the person to greet. Default `"World"`.
+**Required** reviewdog requires a GitHub token. It should be '`github_token: ${{ secrets.github_token }}`'.
+
+### `level`
+
+Optional. Report level for reviewdog \[`info`, `warning`, `error`\].
+It's same as `-level` flag of reviewdog.
+
+### `reporter`
+
+Reporter of reviewdog command \[`github-pr-check`, `github-pr-review`\].
+The default value is `github-pr-check`.
+
+### `args`
+
+Overrides the arguments for cfn-lint.
+The default value is `**/*.yaml **/*.yml **/*.json`.
 
 ## Outputs
 
-### `time`
-
-The time we greeted you.
+There is no output.
 
 ## Example usage
 
 ```yaml
-uses: actions/hello-world-docker-action@master
-with:
-  who-to-greet: 'Mona the Octocat'
+- name: minimum example
+  uses: shogo82148/actions-cfn-lint@v1
+  with:
+    github_token: ${{ secrets.GITHUB_TOKEN }}
 ```
+
+See [.github/workflows/build.yml](.github/workflows/build.yml) for more examples.
