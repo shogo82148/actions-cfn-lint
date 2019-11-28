@@ -1,5 +1,10 @@
 # GitHub Action for CloudFormation Linter with reviewdog
 
+This GitHub Action validates CloudFormation yaml/json templates using [CloudFormation Linter](https://github.com/aws-cloudformation/cfn-python-lint/).
+It is similar to [cfn-lint-action](https://github.com/marketplace/actions/cfn-lint-action),
+but with [reviewdog](https://github.com/reviewdog/reviewdog) on pull requests to improve code review experience.
+
+[![github-pr-check sample](https://user-images.githubusercontent.com/1157344/69779599-e084ae80-11eb-11ea-80f8-9350d4d93568.png)](https://github.com/shogo82148/actions-cfn-lint/pull/2/files)
 
 ## Inputs
 
