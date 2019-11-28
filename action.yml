@@ -18,3 +18,4 @@ outputs: {}
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  args: '**.(yaml|yml|json)'
