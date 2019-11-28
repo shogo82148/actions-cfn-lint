@@ -1,5 +1,7 @@
 # GitHub Action for CloudFormation Linter with reviewdog
 
+![build Docker Image](https://github.com/shogo82148/actions-cfn-lint/workflows/build%20Docker%20Image/badge.svg)
+
 This GitHub Action validates CloudFormation yaml/json templates using [CloudFormation Linter](https://github.com/aws-cloudformation/cfn-python-lint/).
 It is similar to [cfn-lint-action](https://github.com/marketplace/actions/cfn-lint-action),
 but with [reviewdog](https://github.com/reviewdog/reviewdog) on pull requests to improve code review experience.
