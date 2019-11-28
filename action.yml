@@ -5,6 +5,15 @@ inputs:
   github_token:
     description: 'set secrets.GITHUB_TOKEN'
     required: true
+  level:
+    description: 'Report level for reviewdog [info,warning,error]'
+    default: 'error'
+  reporter:
+    description: |
+      Reporter of reviewdog command [github-pr-check,github-pr-review].
+      Default is github-pr-check.
+      github-pr-review can use Markdown and add a link to rule page in reviewdog reports.
+    default: 'github-pr-check'
 outputs: {}
 runs:
   using: 'docker'
