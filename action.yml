@@ -3,7 +3,7 @@ description: 'cfn-lint with reviewdog'
 author: 'Ichinose Shogo'
 inputs:
   github_token:
-    description: 'set ${{ secrets.GITHUB_TOKEN }}'
+    description: 'set secrets.GITHUB_TOKEN'
     required: true
 outputs: {}
 runs:
