@@ -3,8 +3,8 @@ description: 'cfn-lint with reviewdog'
 author: 'Ichinose Shogo'
 inputs:
   github_token:
-    description: 'set secrets.GITHUB_TOKEN'
-    required: true
+    description: 'set secrets.GITHUB_TOKEN or github.token'
+    default: '${{ github.token }}'
   level:
     description: 'Report level for reviewdog [info,warning,error]'
     default: 'error'
