@@ -18,11 +18,8 @@ jobs:
 
       - name: minimum example
         uses: ./
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: with args
         uses: ./
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
           args: testdata/template.yaml
