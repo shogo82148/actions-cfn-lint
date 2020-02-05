@@ -12,7 +12,7 @@ but with [reviewdog](https://github.com/reviewdog/reviewdog) on pull requests to
 
 ### `github_token`
 
-**Required** reviewdog requires a GitHub token. It should be '`github_token: ${{ secrets.github_token }}`'.
+**Required** reviewdog requires a GitHub token. The default value is '`${{ secrets.github_token }}`'.
 
 ### `level`
 
@@ -38,8 +38,6 @@ There is no output.
 ```yaml
 - name: minimum example
   uses: shogo82148/actions-cfn-lint@v1
-  with:
-    github_token: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 See [.github/workflows/build.yml](.github/workflows/build.yml) for more examples.
