@@ -21,3 +21,6 @@ jobs:
           printenv PASSWORD | docker login -u "$USERNAME" --password-stdin
           docker push ${{ github.repository }}:latest
           docker logout
+        env:
+          USERNAME: ${{ secrets.username }}
+          PASSWORD: ${{ secrets.password }}
