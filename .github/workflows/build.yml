@@ -24,3 +24,4 @@ jobs:
         env:
           USERNAME: ${{ secrets.username }}
           PASSWORD: ${{ secrets.password }}
+        if: github.event_name == 'push' || github.event_name == 'schedule'
