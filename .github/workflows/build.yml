@@ -3,6 +3,10 @@ name: build Docker Image
 on:
   pull_request:
   push:
+    branches:
+      - master
+  schedule:
+    - cron: '23 9 * * *'
 
 jobs:
 
@@ -11,4 +15,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build the Docker image
-        run: docker build .
+        run: docker build -t ${{ github.repository }}:latest .
+      - name: Publish
+        run: |
+          printenv PASSWORD | docker login -u "$USERNAME" --password-stdin
+          docker push ${{ github.repository }}:latest
+          docker logout
+        env:
+          USERNAME: ${{ secrets.username }}
+          PASSWORD: ${{ secrets.password }}
+        if: github.event_name == 'push' || github.event_name == 'schedule'
