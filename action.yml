@@ -20,7 +20,7 @@ inputs:
 outputs: {}
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: 'docker://shogo82148/actions-cfn-lint:latest'
   args:
     - '**/*.yaml'
     - '**/*.yml'
