@@ -3,6 +3,10 @@ name: build Docker Image
 on:
   pull_request:
   push:
+    branches:
+      - master
+  schedule:
+    - '23 9 * * *'
 
 jobs:
 
