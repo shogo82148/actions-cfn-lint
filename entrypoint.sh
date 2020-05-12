@@ -11,6 +11,10 @@ fi
 
 reviewdog \
     -efm='%f:%l:%c:%*[0-9]:%*[0-9]:%t%n:%m' \
-    -name="CloudFormation Linter" \
+    -name="${INPUT_TOOL_NAME}" \
     -reporter="${INPUT_REPORTER}" \
-    -level="${INPUT_LEVEL}" < /tmp/out.log
+    -filter-mode="${INPUT_FILTER_MODE}" \
+    -fail-on-error="${INPUT_FAIL_ON_ERROR}" \
+    -level="${INPUT_LEVEL}" \
+    \ # shellcheck disable=SC2086
+    ${INPUT_REVIEWDOG_FLAGS} < /tmp/out.log
