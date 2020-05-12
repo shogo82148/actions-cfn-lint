@@ -14,6 +14,10 @@ but with [reviewdog](https://github.com/reviewdog/reviewdog) on pull requests to
 
 **Required** reviewdog requires a GitHub token. The default value is '`${{ secrets.github_token }}`'.
 
+### `tool_name`
+
+Optional. Tool name to use for reviewdog reporter. Useful when running multiple actions with different config.
+
 ### `level`
 
 Optional. Report level for reviewdog \[`info`, `warning`, `error`\].
@@ -23,6 +27,18 @@ It's same as `-level` flag of reviewdog.
 
 Reporter of reviewdog command \[`github-pr-check`, `github-pr-review`\].
 The default value is `github-pr-check`.
+
+### `filter_mode`
+
+Optional. Filtering mode for the reviewdog command \[`added`,`diff_context`,`file`,`nofilter`\]. Default is `added`.
+
+### `fail_on_error`
+
+Optional. Exit code for reviewdog when errors are found \[`true`,`false`\] Default is `false`.
+
+### `reviewdog_flags`
+
+Optional. Additional reviewdog flags
 
 ### `args`
 
