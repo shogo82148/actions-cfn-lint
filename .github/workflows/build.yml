@@ -14,11 +14,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build the Docker image
-        run: docker build -t ${{ github.repository }}:1.1.0 .
+        run: docker build -t ${{ github.repository }}:1.2.0 .
       - name: Publish
         run: |
           printenv PASSWORD | docker login -u "$USERNAME" --password-stdin
-          docker push ${{ github.repository }}:1.1.0
+          docker push ${{ github.repository }}:1.2.0
           docker logout
         env:
           USERNAME: ${{ secrets.username }}
