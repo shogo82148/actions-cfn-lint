@@ -1,0 +1,33 @@
+name: update cpanm
+on:
+  push:
+    paths:
+      - 'author/cpanm/**'
+      - '.github/workflows/update-cpanm.yml'
+  schedule:
+    - cron: "34 14 * * *"
+
+jobs:
+  cpanm:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: update requirements.txt
+        run: make requirements
+
+      - name: commit
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          branch=update-requirements-$(date +"%Y-%m-%d-%H-%M-%S")
+          git config --global user.name "Ichinose Shogo"
+          git config --global user.email shogo82148@gmail.com
+          git switch -c "$branch"
+          git add .
+          git commit -m "Update requirements.txt $(date +"%Y-%m-%d %H:%M:%S")" || exit 0
+          git push -u origin $branch
+          curl -H "Authorization: token $GITHUB_TOKEN" \
+            -d "$(jq --arg branch $branch -n '{ "title": "Auto Update requirements.txt", "base": "master", "head": $branch }')" \
+            "https://api.github.com/repos/$GITHUB_REPOSITORY/pulls"
