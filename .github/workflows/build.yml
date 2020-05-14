@@ -1,0 +1,25 @@
+name: build Docker Image
+
+on:
+  push:
+    branches-ignore:
+      - '*'
+    tags:
+      - 'v*.*.*'
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build the Docker image
+        run: docker build -t ${{ github.repository }}:1.1.0 .
+      - name: Publish
+        run: |
+          printenv PASSWORD | docker login -u "$USERNAME" --password-stdin
+          docker push ${{ github.repository }}:1.1.0
+          docker logout
+        env:
+          USERNAME: ${{ secrets.username }}
+          PASSWORD: ${{ secrets.password }}
