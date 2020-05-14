@@ -1,9 +1,5 @@
-name: update cpanm
+name: update requirements
 on:
-  push:
-    paths:
-      - 'author/cpanm/**'
-      - '.github/workflows/update-cpanm.yml'
   schedule:
     - cron: "34 14 * * *"
 
