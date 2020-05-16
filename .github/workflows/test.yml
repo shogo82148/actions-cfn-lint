@@ -8,8 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Show Version
+        run: |
+          echo "::set-env name=VERSION::$(cat VERSION)"
       - name: Build the Docker image
-        run: docker build -t ${{ github.repository }}:1.2.0 .
+        run: docker build -t ${{ github.repository }}:"$VERSION" .
 
       - name: minimum example
         uses: ./
