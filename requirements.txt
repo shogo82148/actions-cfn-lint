@@ -1,7 +1,7 @@
 attrs==19.3.0
 aws-sam-translator==1.25.0
-boto3==1.14.15
-botocore==1.17.15
+boto3==1.14.16
+botocore==1.17.16
 cfn-lint==0.33.2
 decorator==4.4.2
 docutils==0.15.2
