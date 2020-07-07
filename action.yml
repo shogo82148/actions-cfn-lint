@@ -10,7 +10,7 @@ inputs:
     default: 'error'
   tool_name:
     description: 'Tool name to use for reviewdog reporter'
-    default: 'CloudFormation Linter'
+    default: 'cfn-lint'
   reporter:
     description: |
       Reporter of reviewdog command [github-pr-check,github-pr-review].
