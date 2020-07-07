@@ -15,7 +15,7 @@ jobs:
 
       - name: commit
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ secrets.SHOGO_GITHUB_TOKEN }}
         run: |
           branch=update-requirements-$(date +"%Y-%m-%d-%H-%M-%S")
           git config --global user.name "Ichinose Shogo"
