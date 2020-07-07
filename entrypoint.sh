@@ -13,4 +13,5 @@ reviewdog \
     -efm='%f:%l:%c:%*[0-9]:%*[0-9]:%t%n:%m' \
     -name="${INPUT_TOOL_NAME}" \
     -reporter="${INPUT_REPORTER}" \
+    -filter-mode="${INPUT_FILTER_MODE}" \
     -level="${INPUT_LEVEL}" < /tmp/out.log
