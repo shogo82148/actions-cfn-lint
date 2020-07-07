@@ -15,4 +15,5 @@ reviewdog \
     -reporter="${INPUT_REPORTER}" \
     -filter-mode="${INPUT_FILTER_MODE}" \
     -fail-on-error="${INPUT_FAIL_ON_ERROR}" \
-    -level="${INPUT_LEVEL}" < /tmp/out.log
+    -level="${INPUT_LEVEL}" \
+    ${INPUT_REVIEWDOG_FLAGS} < /tmp/out.log
