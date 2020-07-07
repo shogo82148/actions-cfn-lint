@@ -2,6 +2,7 @@ name: update requirements
 on:
   schedule:
     - cron: "34 14 * * *"
+  workflow_dispatch:
 
 jobs:
   cpanm:
