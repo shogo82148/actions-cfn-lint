@@ -16,4 +16,5 @@ reviewdog \
     -filter-mode="${INPUT_FILTER_MODE}" \
     -fail-on-error="${INPUT_FAIL_ON_ERROR}" \
     -level="${INPUT_LEVEL}" \
+    \ # shellcheck disable=SC2086
     ${INPUT_REVIEWDOG_FLAGS} < /tmp/out.log
