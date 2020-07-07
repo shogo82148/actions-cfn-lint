@@ -20,4 +20,5 @@ jobs:
       - name: with args
         uses: ./
         with:
+          tool_name: cfn-lint with args
           args: testdata/template.yaml
