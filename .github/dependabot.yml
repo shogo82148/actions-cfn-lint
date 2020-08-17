@@ -3,12 +3,10 @@ updates:
 - package-ecosystem: docker
   directory: "/"
   schedule:
-    interval: monthly
-    time: "20:00"
-  open-pull-requests-limit: 10
+    interval: daily
+  open-pull-requests-limit: 2
 - package-ecosystem: pip
   directory: "/"
   schedule:
-    interval: monthly
-    time: "20:00"
-  open-pull-requests-limit: 10
+    interval: daily
+  open-pull-requests-limit: 2
