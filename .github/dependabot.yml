@@ -10,3 +10,15 @@ updates:
     schedule:
       interval: daily
     open-pull-requests-limit: 5
+    ignore:
+      # ignore patch updates. they are frequently updated.
+      - dependency-name: boto3
+        versions:
+          - ">=1.14.0, <1.15.0"
+      - dependency-name: botocore
+        versions:
+          - ">=1.17.0, <1.18.0"
+      # botocore requires docutils>=0.10,<0.16
+      - dependency-name: docutils
+        versions:
+          - ">=0.16.0"
