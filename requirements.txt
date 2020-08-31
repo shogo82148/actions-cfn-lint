@@ -14,7 +14,7 @@ distlib==0.3.0
 distro==1.5.0
 docutils==0.15.2
 html5lib==1.0.1
-idna==2.9
+idna==2.10
 jmespath==0.10.0
 jsonpatch==1.26
 jsonpointer==2.0
