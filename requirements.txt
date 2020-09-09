@@ -28,7 +28,7 @@ packaging==20.4
 pep517==0.8.2
 progress==1.5
 pyparsing==2.4.7
-pyrsistent==0.16.0
+pyrsistent==0.17.0
 python-dateutil==2.8.1
 pytoml==0.1.21
 PyYAML==5.3.1
