@@ -14,7 +14,7 @@ updates:
       # ignore patch updates. they are frequently updated.
       - dependency-name: boto3
         versions:
-          - ">=1.14.0, <1.15.0"
+          - "<1.16.0"
       - dependency-name: botocore
         versions:
-          - ">=1.17.0, <1.18.0"
+          - "<1.19.0"
