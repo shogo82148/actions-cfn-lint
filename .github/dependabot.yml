@@ -18,7 +18,3 @@ updates:
       - dependency-name: botocore
         versions:
           - ">=1.17.0, <1.18.0"
-      # botocore requires docutils>=0.10,<0.16
-      - dependency-name: docutils
-        versions:
-          - ">=0.16.0"
