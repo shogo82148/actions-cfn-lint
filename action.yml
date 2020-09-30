@@ -34,6 +34,9 @@ inputs:
     description: override args for cfn-lint
     default: ''
 outputs: {}
+branding:
+  icon: 'check-circle'  
+  color: 'orange'
 runs:
   using: 'docker'
   image: 'docker://shogo82148/actions-cfn-lint:1.5.7'
