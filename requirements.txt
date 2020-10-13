@@ -7,7 +7,7 @@ CacheControl==0.12.6
 certifi==2020.4.5.1
 cfn-lint==0.37.1
 chardet==3.0.4
-colorama==0.4.3
+colorama==0.4.4
 contextlib2==0.6.0
 decorator==4.4.2
 distlib==0.3.0
