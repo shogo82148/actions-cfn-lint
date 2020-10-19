@@ -24,7 +24,7 @@ msgpack==1.0.0
 networkx==2.5
 ordered-set==4.0.1
 packaging==20.4
-pep517==0.8.2
+pep517==0.9.1
 progress==1.5
 pyparsing==2.4.7
 pyrsistent==0.17.3
