@@ -1,5 +1,5 @@
 appdirs==1.4.4
-attrs==20.2.0
+attrs==20.3.0
 aws-sam-translator==1.28.1
 boto3==1.16.2
 botocore==1.19.3
