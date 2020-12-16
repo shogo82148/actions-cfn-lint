@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  cpanm:
+  requirements:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -21,7 +21,7 @@ jobs:
         env:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          branch=update-cpanm-$(date +"%Y-%m-%d-%H-%M-%S")
+          branch=update-requirements-$(date +"%Y-%m-%d-%H-%M-%S")
           git config --global user.name "Ichinose Shogo"
           git config --global user.email shogo82148@gmail.com
           git switch -c "$branch"
