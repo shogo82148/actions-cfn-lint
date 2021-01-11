@@ -1,8 +1,8 @@
 appdirs==1.4.4
 attrs==20.3.0
 aws-sam-translator==1.33.0
-boto3==1.16.51
-botocore==1.19.51
+boto3==1.16.52
+botocore==1.19.52
 CacheControl==0.12.6
 certifi==2020.4.5.1
 cfn-lint==0.44.3
@@ -33,7 +33,7 @@ pytoml==0.1.21
 PyYAML==5.3.1
 requests==2.23.0
 retrying==1.3.3
-s3transfer==0.3.3
+s3transfer==0.3.4
 six==1.15.0
 toml==0.10.1
 urllib3==1.25.9
