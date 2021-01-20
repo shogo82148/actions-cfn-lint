@@ -21,11 +21,21 @@ jobs:
           token: ${{ steps.generate_token.outputs.token }}
 
       - name: update requirements.txt
-        run: make requirements
+        id: update
+        run: |
+          mv requirements.txt requirements.old.txt
+          make requirements
+
+          # boto3 and botocore are updated very often, so ignore them
+          diff <(cat requirements.old.txt | grep -v -E 'boto(3|core)') \
+            <(cat urequirements.txt | grep -v -E 'boto(3|core)') && true
+          echo "::set-output name=result::$?"
+          rm requirements.old.txt
 
       - name: commit
         env:
           TOKEN: ${{ steps.generate_token.outputs.token }}
+        if: steps.update.outputs.result == '1'
         run: |
           branch=update-requirements-$(date +"%Y-%m-%d-%H-%M-%S")
           git config --global user.name "Ichinose Shogo"
