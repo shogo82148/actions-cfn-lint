@@ -1,4 +1,4 @@
-FROM alpine:3.12
+FROM alpine:3.13
 
 # install cfn-lint
 COPY requirements.txt /requirements.txt
