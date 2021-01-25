@@ -4,7 +4,7 @@ aws-sam-translator==1.33.0
 boto3==1.16.59
 botocore==1.19.59
 CacheControl==0.12.6
-cfn-lint==0.44.4
+cfn-lint==0.44.5
 chardet==4.0.0
 colorama==0.4.4
 contextlib2==0.6.0
