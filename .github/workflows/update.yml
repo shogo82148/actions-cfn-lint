@@ -28,7 +28,7 @@ jobs:
 
           # boto3 and botocore are updated very often, so ignore them
           diff <(cat requirements.old.txt | grep -v -E 'boto(3|core)') \
-            <(cat urequirements.txt | grep -v -E 'boto(3|core)') && true
+            <(cat requirements.txt | grep -v -E 'boto(3|core)') && true
           echo "::set-output name=result::$?"
           rm requirements.old.txt
 
