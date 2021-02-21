@@ -40,7 +40,7 @@ Optional. Exit code for reviewdog when errors are found \[`true`,`false`\] Defau
 
 Optional. Additional reviewdog flags
 
-### `args`
+### `cfn_lint_args`
 
 Overrides the arguments for cfn-lint.
 The default value is `**/*.yaml **/*.yml **/*.json`.
