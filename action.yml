@@ -1,46 +1,46 @@
-name: 'actions-cfn-lint'
-description: 'cfn-lint with reviewdog'
-author: 'Ichinose Shogo'
+name: "actions-cfn-lint"
+description: "cfn-lint with reviewdog"
+author: "Ichinose Shogo"
 inputs:
   github_token:
-    description: 'set secrets.GITHUB_TOKEN or github.token'
-    default: '${{ github.token }}'
+    description: "set secrets.GITHUB_TOKEN or github.token"
+    default: "${{ github.token }}"
   level:
-    description: 'Report level for reviewdog [info,warning,error]'
-    default: 'error'
+    description: "Report level for reviewdog [info,warning,error]"
+    default: "error"
   tool_name:
-    description: 'Tool name to use for reviewdog reporter'
-    default: 'cfn-lint'
+    description: "Tool name to use for reviewdog reporter"
+    default: "cfn-lint"
   reporter:
     description: |
       Reporter of reviewdog command [github-pr-check,github-pr-review].
       Default is github-pr-check.
       github-pr-review can use Markdown and add a link to rule page in reviewdog reports.
-    default: 'github-pr-check'
+    default: "github-pr-check"
   filter_mode:
     description: |
       Filtering for the reviewdog command [added,diff_context,file,nofilter].
       Default is added.
-    default: 'added'
+    default: "added"
   fail_on_error:
     description: |
       Exit code for reviewdog when errors are found [true,false]
       Default is `false`.
-    default: 'false'
+    default: "false"
   reviewdog_flags:
-    description: 'Additional reviewdog flags'
-    default: ''
-  args:
+    description: "Additional reviewdog flags"
+    default: ""
+  cfn_lint_args:
     description: override args for cfn-lint
-    default: ''
+    default: ""
 outputs: {}
 branding:
-  icon: 'check-circle'  
-  color: 'orange'
+  icon: "check-circle"
+  color: "orange"
 runs:
-  using: 'docker'
-  image: 'docker://shogo82148/actions-cfn-lint:1.6.14'
+  using: "docker"
+  image: "docker://shogo82148/actions-cfn-lint:1.6.14"
   args:
-    - '**/*.yaml'
-    - '**/*.yml'
-    - '**/*.json'
+    - "**/*.yaml"
+    - "**/*.yml"
+    - "**/*.json"
