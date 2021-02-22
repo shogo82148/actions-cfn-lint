@@ -12,9 +12,9 @@ fi
 # shellcheck disable=SC2086
 reviewdog \
     -efm='%f:%l:%c:%*[0-9]:%*[0-9]:%t%n:%m' \
-    -name="${INPUT_TOOL_NAME}" \
-    -reporter="${INPUT_REPORTER}" \
-    -filter-mode="${INPUT_FILTER_MODE}" \
-    -fail-on-error="${INPUT_FAIL_ON_ERROR}" \
-    -level="${INPUT_LEVEL}" \
+    -name="${INPUT_TOOL_NAME:-cfn-lint}" \
+    -reporter="${INPUT_REPORTER:-github-pr-check}" \
+    -filter-mode="${INPUT_FILTER_MODE:-added}" \
+    -fail-on-error="${INPUT_FAIL_ON_ERROR:-0}" \
+    -level="${INPUT_LEVEL:-error}" \
     ${INPUT_REVIEWDOG_FLAGS} < /tmp/out.log
