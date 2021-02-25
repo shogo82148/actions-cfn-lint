@@ -2,9 +2,9 @@
 
 export REVIEWDOG_GITHUB_API_TOKEN=$INPUT_GITHUB_TOKEN
 
-if [ -n "$INPUT_CFN_LINT_ARGS" ]; then
+if [ -n "$INPUT_ARGS" ]; then
     # shellcheck disable=SC2086
-    cfn-lint --format parseable $INPUT_CFN_LINT_ARGS > /tmp/out.log
+    cfn-lint --format parseable $INPUT_ARGS > /tmp/out.log
 else
     cfn-lint --format parseable "$@" > /tmp/out.log
 fi

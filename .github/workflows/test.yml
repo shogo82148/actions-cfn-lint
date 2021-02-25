@@ -3,6 +3,7 @@ name: test
 on: pull_request
 
 jobs:
+
   test:
     runs-on: ubuntu-latest
     steps:
@@ -15,12 +16,9 @@ jobs:
 
       - name: minimum example
         uses: ./
-        with:
-          level: warning
 
       - name: with args
         uses: ./
         with:
-          level: warning
           tool_name: cfn-lint with args
-          cfn_lint_args: testdata/template.yaml
+          args: testdata/template.yaml
