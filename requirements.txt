@@ -1,8 +1,8 @@
 appdirs==1.4.4
-attrs==20.3.0
+attrs==21.1.0
 aws-sam-translator==1.35.0
-boto3==1.17.59
-botocore==1.20.59
+boto3==1.17.68
+botocore==1.20.68
 CacheControl==0.12.6
 cfn-lint==0.49.0
 chardet==4.0.0
