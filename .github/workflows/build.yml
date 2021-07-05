@@ -18,7 +18,9 @@ jobs:
         run: |
           echo "VERSION=$(cat VERSION)" >> "$GITHUB_ENV"
       - name: Build the Docker image
-        run: docker build -t ${{ github.repository }}:"$VERSION" .
+        run: |
+          docker build -t ${{ github.repository }}:"$VERSION" .
+          docker build -t ghcr.io/${{ github.repository }}:"$VERSION" .
 
       - name: Publish to Docker Hub
         run: |
