@@ -13,7 +13,7 @@ PATCH=$(echo "$VERSION" | cut -d. -f3)
 
 cd "$CURRENT"
 echo "$VERSION" > VERSION
-perl -i -pe "s(docker://shogo82148/actions-cfn-lint:[-a-zA-Z0-9.]*)(docker://shogo82148/actions-cfn-lint:$VERSION)" action.yml
+perl -i -pe "s(docker://ghcr[.]io/shogo82148/actions-cfn-lint:[-a-zA-Z0-9.]*)(docker://ghcr.io/shogo82148/actions-cfn-lint:$VERSION)" action.yml
 git add VERSION action.yml
 git commit -m "bump v$MAJOR.$MINOR.$PATCH"
 git push origin main

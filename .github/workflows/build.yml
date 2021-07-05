@@ -6,6 +6,7 @@ on:
       - '*'
     tags:
       - 'v*.*.*'
+  workflow_dispatch:
 
 jobs:
 
@@ -18,7 +19,8 @@ jobs:
           echo "VERSION=$(cat VERSION)" >> "$GITHUB_ENV"
       - name: Build the Docker image
         run: docker build -t ${{ github.repository }}:"$VERSION" .
-      - name: Publish
+
+      - name: Publish to Docker Hub
         run: |
           printenv PASSWORD | docker login -u "$USERNAME" --password-stdin
           docker push ${{ github.repository }}:"$VERSION"
@@ -26,3 +28,12 @@ jobs:
         env:
           USERNAME: ${{ secrets.username }}
           PASSWORD: ${{ secrets.password }}
+
+      - name: Publish to GitHub Container Registry
+        run: |
+          printenv PASSWORD | docker login ghcr.io --username "$USERNAME" --password-stdin
+          docker push ghcr.io/${{ github.repository }}:"$VERSION"
+          docker logout ghcr.io
+        env:
+          USERNAME: ${{ github.repository_owner }}
+          PASSWORD: ${{ secrets.GITHUB_TOKEN }}
