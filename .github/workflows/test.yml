@@ -8,11 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Show Version
-        run: |
-          echo "VERSION=$(cat VERSION)" >> "$GITHUB_ENV"
-      - name: Build the Docker image
-        run: docker build -t ghcr.io/${{ github.repository }}:"$VERSION" .
 
       - name: minimum example
         uses: ./
