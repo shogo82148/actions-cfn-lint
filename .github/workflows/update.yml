@@ -27,15 +27,15 @@ jobs:
           make requirements
 
           # boto3 and botocore are updated very often, so ignore them
-          diff <(cat requirements.old.txt | grep -v -E 'boto(3|core)') \
-            <(cat requirements.txt | grep -v -E 'boto(3|core)') && true
+          diff <(grep -v -E 'boto(3|core)' requirements.old.txt) \
+            <(grep -v -E 'boto(3|core)' requirements.txt) && true
           echo "::set-output name=result::$?"
           rm requirements.old.txt
 
       - name: commit
         env:
           TOKEN: ${{ steps.generate_token.outputs.token }}
-        if: steps.update.outputs.result == '1'
+        if: ${{ steps.update.outputs.result == '1' }}
         run: |
           branch=update-requirements-$(date +"%Y-%m-%d-%H-%M-%S")
           git config --global user.name "Ichinose Shogo"
@@ -43,7 +43,7 @@ jobs:
           git switch -c "$branch"
           git add .
           git commit -m "Update requirements.txt $(date +"%Y-%m-%d %H:%M:%S")" || exit 0
-          git push -u origin $branch
+          git push -u origin "$branch"
           curl -H "Authorization: token $TOKEN" \
-            -d "$(jq --arg branch $branch -n '{ "title": "Auto Update", "base": "main", "head": $branch }')" \
+            -d "$(jq --arg branch "$branch" -n '{ "title": "Auto Update", "base": "main", "head": $branch }')" \
             "https://api.github.com/repos/$GITHUB_REPOSITORY/pulls"
