@@ -3,7 +3,7 @@ name: build Docker Image
 on:
   push:
     branches-ignore:
-      - '*'
+      - '**'
     tags:
       - 'v*.*.*'
   workflow_dispatch:
