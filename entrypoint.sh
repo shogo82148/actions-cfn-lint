@@ -18,3 +18,6 @@ reviewdog \
     -fail-on-error="${INPUT_FAIL_ON_ERROR}" \
     -level="${INPUT_LEVEL}" \
     ${INPUT_REVIEWDOG_FLAGS} < /tmp/out.log
+exit_code=$?
+
+exit $exit_code
