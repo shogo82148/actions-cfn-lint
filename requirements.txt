@@ -1,8 +1,8 @@
 appdirs==1.4.4
 attrs==21.2.0
-aws-sam-translator==1.38.0
-boto3==1.18.46
-botocore==1.21.46
+aws-sam-translator==1.39.0
+boto3==1.18.51
+botocore==1.21.51
 CacheControl==0.12.6
 certifi==2020.12.5
 cfn-lint==0.54.2
