@@ -1,8 +1,8 @@
 appdirs==1.4.4
 attrs==21.4.0
 aws-sam-translator==1.42.0
-boto3==1.20.26
-botocore==1.23.26
+boto3==1.20.31
+botocore==1.23.31
 CacheControl==0.12.10
 certifi==2020.12.5
 cfn-lint==0.56.3
@@ -39,5 +39,5 @@ sarif-om==1.0.4
 six==1.16.0
 toml==0.10.2
 tomli==1.2.2
-urllib3==1.26.7
+urllib3==1.26.8
 webencodings==0.5.1
