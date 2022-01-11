@@ -8,14 +8,8 @@ jobs:
   requirements:
     runs-on: ubuntu-latest
     steps:
-      - name: Generate token
-        id: generate_token
-        uses: shogo82148/actions-github-app-token@v0
-
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          token: ${{ steps.generate_token.outputs.token }}
 
       - name: update requirements.txt
         id: update
@@ -29,18 +23,13 @@ jobs:
           echo "::set-output name=result::$?"
           rm requirements.old.txt
 
-      - name: commit
-        env:
-          TOKEN: ${{ steps.generate_token.outputs.token }}
+      - name: Generate token
+        id: generate_token
+        uses: shogo82148/actions-github-app-token@v0
+
+      - name: commit and create a pull request
         if: ${{ steps.update.outputs.result == '1' }}
-        run: |
-          branch=update-requirements-$(date +"%Y-%m-%d-%H-%M-%S")
-          git config --global user.name "Ichinose Shogo"
-          git config --global user.email shogo82148@gmail.com
-          git switch -c "$branch"
-          git add .
-          git commit -m "Update requirements.txt $(date +"%Y-%m-%d %H:%M:%S")" || exit 0
-          git push -u origin "$branch"
-          curl -H "Authorization: token $TOKEN" \
-            -d "$(jq --arg branch "$branch" -n '{ "title": "Auto Update", "base": "main", "head": $branch }')" \
-            "https://api.github.com/repos/$GITHUB_REPOSITORY/pulls"
+        uses: shogo82148/actions-commit-and-create-pr@v1
+        with:
+          github-token: ${{ steps.generate_token.outputs.token }}
+          commit-message: "auto update dependencies"
