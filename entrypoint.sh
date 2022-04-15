@@ -9,6 +9,8 @@ else
     cfn-lint --format parseable "$@" > /tmp/out.log
 fi
 
+setopt -s globstar
+
 # shellcheck disable=SC2086
 reviewdog \
     -efm='%f:%l:%c:%*[0-9]:%*[0-9]:%t%n:%m' \
