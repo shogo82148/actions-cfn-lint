@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 export REVIEWDOG_GITHUB_API_TOKEN=$INPUT_GITHUB_TOKEN
 
