@@ -11,6 +11,8 @@ else
     cfn-lint --format parseable "$@" > /tmp/out.log
 fi
 
+git config --global --add safe.directory "${PWD}" || exit 1
+
 # shellcheck disable=SC2086
 reviewdog \
     -efm='%f:%l:%c:%*[0-9]:%*[0-9]:%t%n:%m' \
