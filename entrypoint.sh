@@ -8,7 +8,8 @@ if [ -n "$INPUT_ARGS" ]; then
     # shellcheck disable=SC2086
     cfn-lint --format parseable $INPUT_ARGS > /tmp/out.log
 else
-    cfn-lint --format parseable "$@" > /tmp/out.log
+    # shellcheck disable=SC2068
+    cfn-lint --format parseable $@ > /tmp/out.log
 fi
 
 git config --global --add safe.directory "${PWD}" || exit 1
