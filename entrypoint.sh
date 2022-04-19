@@ -9,7 +9,7 @@ else
     cfn-lint --format parseable "$@" > /tmp/out.log
 fi
 
-setopt -s globstar nullglob
+shopt -s globstar nullglob
 
 # shellcheck disable=SC2086
 reviewdog \
