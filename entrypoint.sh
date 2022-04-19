@@ -1,5 +1,7 @@
 #!/bin/bash
 
+shopt -s globstar nullglob
+
 export REVIEWDOG_GITHUB_API_TOKEN=$INPUT_GITHUB_TOKEN
 
 if [ -n "$INPUT_ARGS" ]; then
@@ -8,8 +10,6 @@ if [ -n "$INPUT_ARGS" ]; then
 else
     cfn-lint --format parseable "$@" > /tmp/out.log
 fi
-
-shopt -s globstar nullglob
 
 # shellcheck disable=SC2086
 reviewdog \
