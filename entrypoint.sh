@@ -1,4 +1,6 @@
-#!/bin/sh
+#!/bin/bash
+
+shopt -s globstar nullglob
 
 export REVIEWDOG_GITHUB_API_TOKEN=$INPUT_GITHUB_TOKEN
 
