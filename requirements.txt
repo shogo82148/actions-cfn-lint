@@ -1,8 +1,8 @@
 appdirs==1.4.4
 attrs==21.4.0
 aws-sam-translator==1.45.0
-boto3==1.23.0
-botocore==1.26.0
+boto3==1.23.3
+botocore==1.26.3
 CacheControl==0.12.10
 certifi==2020.12.5
 cfn-lint==0.60.0
@@ -22,7 +22,7 @@ jsonschema==3.2.0
 junit-xml==1.9
 lockfile==0.12.2
 msgpack==1.0.2
-networkx==2.8
+networkx==2.8.1
 ordered-set==4.0.2
 packaging==20.9
 pbr==5.9.0
