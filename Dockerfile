@@ -5,7 +5,7 @@ COPY requirements.txt /requirements.txt
 RUN apk --no-cache add python3 py3-pip git bash && pip install --upgrade pip && pip install --no-cache -r /requirements.txt
 
 # install reviewdog
-RUN wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh | sh -s -- -b /usr/local/bin/ v0.14.0
+RUN wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh | sh -s -- -b /usr/local/bin/ v0.14.1
 
 COPY entrypoint.sh /entrypoint.sh
 
