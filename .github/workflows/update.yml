@@ -20,7 +20,7 @@ jobs:
           # boto3 and botocore are updated very often, so ignore them
           diff <(grep -v -E 'boto(3|core)' requirements.old.txt) \
             <(grep -v -E 'boto(3|core)' requirements.txt) && true
-          echo "::set-output name=result::$?"
+          echo "result=$?" >> "$GITHUB_OUTPUT"
           rm requirements.old.txt
 
       - name: Generate token
