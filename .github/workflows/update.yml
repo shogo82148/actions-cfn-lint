@@ -4,6 +4,10 @@ on:
     - cron: "25 20 * * *"
   workflow_dispatch:
 
+permissions:
+  id-token: write
+  contents: write
+
 jobs:
   requirements:
     runs-on: ubuntu-latest
