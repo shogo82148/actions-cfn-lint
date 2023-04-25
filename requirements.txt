@@ -1,9 +1,9 @@
 appdirs==1.4.4
 attrs==23.1.0
 aws-sam-translator==1.65.0
-boto3==1.26.117
-botocore==1.29.117
-cfn-lint==0.77.2
+boto3==1.26.120
+botocore==1.29.120
+cfn-lint==0.77.3
 contextlib2==21.6.0
 jmespath==1.0.1
 jschema-to-python==1.2.3
