@@ -12,11 +12,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: minimum example
-        uses: ./
-
-      - name: with args
+      - name: example
         uses: ./
         with:
           tool_name: cfn-lint with args
-          args: testdata/template.yaml
+          cfn_lint_args: testdata/template.yaml
