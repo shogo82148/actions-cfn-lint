@@ -34,13 +34,13 @@ Optional. Filtering mode for the reviewdog command \[`added`,`diff_context`,`fil
 
 ### `fail_on_error`
 
-Optional. Exit code for reviewdog when errors are found \[`true`,`false`\] Default is `false`.
+Optional. Exit code for reviewdog when errors are found \[`true`,`false`\]. Default is `false`.
 
 ### `reviewdog_flags`
 
 Optional. Additional reviewdog flags
 
-### `args`
+### `cfn_lint_args`
 
 Overrides the arguments for cfn-lint.
 The default value is `**/*.yaml **/*.yml **/*.json`.
