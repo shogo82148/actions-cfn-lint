@@ -1,6 +1,6 @@
 name: "actions-cfn-lint"
 description: "cfn-lint with reviewdog"
-author: "Ichinose Shogo"
+author: "ICHINOSE Shogo"
 inputs:
   github_token:
     description: "set secrets.GITHUB_TOKEN or github.token"
@@ -31,8 +31,12 @@ inputs:
     description: "Additional reviewdog flags"
     default: ""
   cfn_lint_args:
-    description: override args for cfn-lint
+    description: "override args for cfn-lint"
     default: ""
+  args:
+    description: "args for cfn-lint"
+    default: ""
+    deprecationMessage: "use cfn_lint_args instead"
 outputs: {}
 branding:
   icon: "check-circle"
