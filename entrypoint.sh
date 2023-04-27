@@ -4,7 +4,10 @@ shopt -s globstar nullglob
 
 export REVIEWDOG_GITHUB_API_TOKEN=$INPUT_GITHUB_TOKEN
 
-if [ -n "$INPUT_ARGS" ]; then
+if [ -n "$INPUT_CFN_LINT_ARGS" ]; then
+    # shellcheck disable=SC2086
+    cfn-lint --format parseable $INPUT_CFN_LINT_ARGS > /tmp/out.log
+elif [ -n "$INPUT_ARGS" ]; then
     # shellcheck disable=SC2086
     cfn-lint --format parseable $INPUT_ARGS > /tmp/out.log
 else
