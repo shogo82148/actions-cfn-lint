@@ -1,8 +1,8 @@
 appdirs==1.4.4
 attrs==23.1.0
 aws-sam-translator==1.68.0
-boto3==1.26.145
-botocore==1.29.145
+boto3==1.26.146
+botocore==1.29.146
 cfn-lint==0.77.6
 contextlib2==21.6.0
 jmespath==1.0.1
@@ -31,5 +31,5 @@ sarif-om==1.0.4
 six==1.16.0
 sympy==1.12
 tomli==2.0.1
-typing_extensions==4.6.2
+typing_extensions==4.6.3
 urllib3==1.26.16
