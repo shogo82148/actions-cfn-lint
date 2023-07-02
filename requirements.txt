@@ -31,5 +31,5 @@ sarif-om==1.0.4
 six==1.16.0
 sympy==1.12
 tomli==2.0.1
-typing_extensions==4.7.0
+typing_extensions==4.7.1
 urllib3==1.26.16
