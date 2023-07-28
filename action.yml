@@ -43,7 +43,7 @@ branding:
   color: "orange"
 runs:
   using: "docker"
-  image: "docker://ghcr.io/shogo82148/actions-cfn-lint:1.73.0"
+  image: "docker://ghcr.io/shogo82148/actions-cfn-lint:1.74.0"
   args:
     - "**/*.yaml"
     - "**/*.yml"
