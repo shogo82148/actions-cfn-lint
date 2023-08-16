@@ -1,8 +1,8 @@
 appdirs==1.4.4
 attrs==23.1.0
 aws-sam-translator==1.73.0
-boto3==1.28.26
-botocore==1.31.26
+boto3==1.28.28
+botocore==1.31.28
 cfn-lint==0.79.7
 contextlib2==21.6.0
 jmespath==1.0.1
@@ -26,7 +26,7 @@ python-dateutil==2.8.2
 PyYAML==6.0.1
 regex==2023.8.8
 retrying==1.3.3
-s3transfer==0.6.1
+s3transfer==0.6.2
 sarif-om==1.0.4
 six==1.16.0
 sympy==1.12
