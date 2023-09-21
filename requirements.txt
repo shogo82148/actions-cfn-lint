@@ -1,8 +1,9 @@
+annotated-types==0.5.0
 appdirs==1.4.4
 attrs==23.1.0
-aws-sam-translator==1.74.0
-boto3==1.28.50
-botocore==1.31.50
+aws-sam-translator==1.75.0
+boto3==1.28.51
+botocore==1.31.51
 cfn-lint==0.80.2
 contextlib2==21.6.0
 jmespath==1.0.1
@@ -10,7 +11,7 @@ jschema-to-python==1.2.3
 jsonpatch==1.33
 jsonpickle==3.0.2
 jsonpointer==2.4
-jsonschema==4.19.0
+jsonschema==4.19.1
 jsonschema-specifications==2023.7.1
 junit-xml==1.9
 more-itertools==8.13.0
@@ -20,7 +21,8 @@ ordered-set==4.0.2
 packaging==21.3
 pbr==5.11.1
 pep517==0.12.0
-pydantic==1.10.12
+pydantic==2.3.0
+pydantic_core==2.6.3
 pyparsing==2.4.7
 python-dateutil==2.8.2
 PyYAML==6.0.1
