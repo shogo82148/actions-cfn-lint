@@ -1,9 +1,9 @@
 annotated-types==0.6.0
 appdirs==1.4.4
 attrs==23.1.0
-aws-sam-translator==1.77.0
-boto3==1.28.62
-botocore==1.31.62
+aws-sam-translator==1.78.0
+boto3==1.28.63
+botocore==1.31.63
 cfn-lint==0.81.0
 contextlib2==21.6.0
 jmespath==1.0.1
