@@ -8,7 +8,7 @@ cfn-lint --version
 
 # INPUT_CFN_LINT_ARGS is intentionally not quoted:
 # shellcheck disable=SC2086
-cfn-lint --format parseable $INPUT_CFN_LINT_ARGS > /tmp/out.log
+cfn-lint --format parseable --non-zero-exit-code none $INPUT_CFN_LINT_ARGS || exit 1 > /tmp/out.log
 
 git config --global --add safe.directory "${PWD}" || exit 1
 
