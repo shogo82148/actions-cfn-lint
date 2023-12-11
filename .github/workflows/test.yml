@@ -17,3 +17,4 @@ jobs:
           tool_name: cfn-lint with args
           filter_mode: nofilter
           cfn_lint_args: testdata/template.yaml
+          level: info
