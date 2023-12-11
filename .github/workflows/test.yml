@@ -11,10 +11,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: example
+      - name: example cfn_lint_args
         uses: ./
         with:
           tool_name: cfn-lint with args
           filter_mode: nofilter
           cfn_lint_args: testdata/template.yaml
           level: info
+
+      - name: example working_directory
+        uses: ./
+        with:
+          tool_name: cfn-lint with args
+          filter_mode: nofilter
+          level: info
+          working_directory: testdata

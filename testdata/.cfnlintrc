@@ -1,0 +1,5 @@
+templates:
+  - template.yaml
+
+ignore_checks:
+  - E2522 # ignore "At least one of [ImageId, LaunchTemplate] should be specified for Resources/MyInstance/Properties"
