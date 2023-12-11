@@ -18,7 +18,7 @@ jobs:
       - name: update requirements.txt
         id: update
         run: |
-          mv requirements.txt requirements.old.txt
+          cp requirements.txt requirements.old.txt
           make requirements
 
           # boto3 and botocore are updated very often, so ignore them
