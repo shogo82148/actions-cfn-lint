@@ -41,6 +41,10 @@ inputs:
     description: "override args for cfn-lint"
     required: false
     default: ""
+  working_directory:
+    description: "working directory relative to root directory"
+    required: false
+    default: "."
 outputs: {}
 branding:
   icon: "check-circle"

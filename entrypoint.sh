@@ -11,6 +11,8 @@ fi
 
 cfn-lint --version
 
+cd "${GITHUB_WORKSPACE}/${INPUT_WORKING_DIRECTORY}" || exit 1
+
 # INPUT_CFN_LINT_ARGS is intentionally not quoted:
 # shellcheck disable=SC2086
 cfn-lint --format parseable --non-zero-exit-code none $INPUT_CFN_LINT_ARGS > /tmp/out.log || exit 1 

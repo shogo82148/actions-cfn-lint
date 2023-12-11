@@ -44,6 +44,10 @@ Optional. Additional reviewdog flags
 
 Optional. the arguments for cfn-lint.
 
+### `working_directory`
+
+Optional. Directory to run the action on, from the repo root. The default is . ( root of the repository).
+
 ## Outputs
 
 There is no output.
