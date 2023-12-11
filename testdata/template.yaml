@@ -5,4 +5,5 @@ Resources:
   MyInstance:
     Type: AWS::EC2::Instance
     Properties:
-      ImageId: 123456 # It should be of type String
+      # ImageId is missing
+      InstanceType: unknown # This is an invalid instance type

@@ -38,12 +38,15 @@ Optional. Exit code for reviewdog when errors are found \[`true`,`false`\]. Defa
 
 ### `reviewdog_flags`
 
-Optional. Additional reviewdog flags
+Optional. Additional reviewdog flags. The default is "".
 
 ### `cfn_lint_args`
 
-Overrides the arguments for cfn-lint.
-The default value is `**/*.yaml **/*.yml **/*.json`.
+Optional. the arguments for cfn-lint. The default is "".
+
+### `working_directory`
+
+Optional. Directory to run the action on, from the repo root. The default is . ( root of the repository).
 
 ## Outputs
 
@@ -54,6 +57,12 @@ There is no output.
 ```yaml
 - name: minimum example
   uses: shogo82148/actions-cfn-lint@v1
+  cfn_lint_args: "**/*.yaml **/*.yml **/*.json"
 ```
 
 See [.github/workflows/build.yml](.github/workflows/build.yml) for more examples.
+
+## Migrate to v1 from v2
+
+- `args` input is removed. use `cfn_lint_args` instead of it.
+- the default of `cfn_lint_args` is now `""`. To have the same behavior as v1, please specify `"**/*.yaml **/*.yml **/*.json"`.

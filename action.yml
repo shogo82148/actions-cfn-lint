@@ -4,35 +4,47 @@ author: "ICHINOSE Shogo"
 inputs:
   github_token:
     description: "set secrets.GITHUB_TOKEN or github.token"
+    required: true
     default: "${{ github.token }}"
   level:
     description: "Report level for reviewdog [info,warning,error]"
+    required: true
     default: "error"
   tool_name:
     description: "Tool name to use for reviewdog reporter"
+    required: true
     default: "cfn-lint"
   reporter:
     description: |
       Reporter of reviewdog command [github-pr-check,github-pr-review].
       Default is github-pr-check.
       github-pr-review can use Markdown and add a link to rule page in reviewdog reports.
+    required: true
     default: "github-pr-check"
   filter_mode:
     description: |
       Filtering for the reviewdog command [added,diff_context,file,nofilter].
       Default is added.
+    required: true
     default: "added"
   fail_on_error:
     description: |
       Exit code for reviewdog when errors are found [true,false]
       Default is `false`.
+    required: true
     default: "false"
   reviewdog_flags:
     description: "Additional reviewdog flags"
+    required: false
     default: ""
   cfn_lint_args:
     description: "override args for cfn-lint"
-    required: true
+    required: false
+    default: ""
+  working_directory:
+    description: "working directory relative to root directory"
+    required: false
+    default: "."
 outputs: {}
 branding:
   icon: "check-circle"
