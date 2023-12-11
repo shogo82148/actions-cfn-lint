@@ -6,7 +6,6 @@ permissions:
   contents: read
 
 jobs:
-
   test:
     runs-on: ubuntu-latest
     steps:
@@ -16,4 +15,5 @@ jobs:
         uses: ./
         with:
           tool_name: cfn-lint with args
+          filter_mode: nofilter
           cfn_lint_args: testdata/template.yaml
