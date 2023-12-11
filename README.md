@@ -42,8 +42,7 @@ Optional. Additional reviewdog flags
 
 ### `cfn_lint_args`
 
-Overrides the arguments for cfn-lint.
-The default value is `**/*.yaml **/*.yml **/*.json`.
+**Required** the arguments for cfn-lint.
 
 ## Outputs
 
@@ -54,6 +53,7 @@ There is no output.
 ```yaml
 - name: minimum example
   uses: shogo82148/actions-cfn-lint@v1
+  cfn_lint_args: "**/*.yaml **/*.yml **/*.json"
 ```
 
 See [.github/workflows/build.yml](.github/workflows/build.yml) for more examples.
