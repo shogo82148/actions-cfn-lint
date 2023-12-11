@@ -2,6 +2,11 @@
 
 shopt -s globstar nullglob
 
+# enable debug if INPUT_RUNNER_DEBUG is set
+if [[ ${RUNNER_DEBUG:-} = '1' ]]; then
+    set -x
+fi
+
 export REVIEWDOG_GITHUB_API_TOKEN=$INPUT_GITHUB_TOKEN
 
 cfn-lint --version
@@ -9,6 +14,11 @@ cfn-lint --version
 # INPUT_CFN_LINT_ARGS is intentionally not quoted:
 # shellcheck disable=SC2086
 cfn-lint --format parseable --non-zero-exit-code none $INPUT_CFN_LINT_ARGS > /tmp/out.log || exit 1 
+
+# show out.log if debug is enabled
+if [[ ${RUNNER_DEBUG:-} = '1' ]]; then
+    cat /tmp/out.log >&2
+fi
 
 git config --global --add safe.directory "${PWD}" || exit 1
 
