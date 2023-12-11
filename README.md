@@ -42,7 +42,7 @@ Optional. Additional reviewdog flags
 
 ### `cfn_lint_args`
 
-**Required** the arguments for cfn-lint.
+Optional. the arguments for cfn-lint.
 
 ## Outputs
 
