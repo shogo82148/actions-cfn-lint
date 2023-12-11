@@ -1,13 +1,13 @@
 #!/bin/bash
 
+export REVIEWDOG_GITHUB_API_TOKEN=$INPUT_GITHUB_TOKEN
+
 shopt -s globstar nullglob
 
 # enable debug if INPUT_RUNNER_DEBUG is set
 if [[ ${RUNNER_DEBUG:-} = '1' ]]; then
     set -x
 fi
-
-export REVIEWDOG_GITHUB_API_TOKEN=$INPUT_GITHUB_TOKEN
 
 cfn-lint --version
 
