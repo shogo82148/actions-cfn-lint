@@ -38,11 +38,11 @@ Optional. Exit code for reviewdog when errors are found \[`true`,`false`\]. Defa
 
 ### `reviewdog_flags`
 
-Optional. Additional reviewdog flags
+Optional. Additional reviewdog flags. The default is "".
 
 ### `cfn_lint_args`
 
-Optional. the arguments for cfn-lint.
+Optional. the arguments for cfn-lint. The default is "".
 
 ### `working_directory`
 
@@ -61,3 +61,8 @@ There is no output.
 ```
 
 See [.github/workflows/build.yml](.github/workflows/build.yml) for more examples.
+
+## Migrate to v1 from v2
+
+- `args` input is removed. use `cfn_lint_args` instead of it.
+- the default of `cfn_lint_args` is now `""`. To have the same behavior as v1, please specify `"**/*.yaml **/*.yml **/*.json"`.
