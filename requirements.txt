@@ -1,9 +1,9 @@
 annotated-types==0.6.0
 attrs==23.1.0
-aws-sam-translator==1.86.0
+aws-sam-translator==1.87.0
 boto3==1.33.11
 botocore==1.33.11
-cfn-lint==0.86.2
+cfn-lint==0.86.3
 jmespath==1.0.1
 jschema-to-python==1.2.3
 jsonpatch==1.33
