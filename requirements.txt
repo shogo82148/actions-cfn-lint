@@ -28,5 +28,5 @@ setuptools==70.0.0
 six==1.16.0
 sympy==1.12
 typing_extensions==4.9.0
-urllib3==2.0.7
+urllib3==2.2.2
 wheel==0.42.0
