@@ -67,7 +67,7 @@ See [.github/workflows/test.yml](.github/workflows/test.yml) for more examples.
 - `args` input is removed. use `cfn_lint_args` instead of it.
 - the default of `cfn_lint_args` is now `""`. To have the same behavior as v1, please specify `"**/*.yaml **/*.yml **/*.json"`.
 
-## Migrate to v4 from v2 and v3
+## Migrate to v4 from v2 or v3
 
 - `fail_on_error` input is removed. use `fail_level` instead of it.
 - the default of `fail_level` is now `none`.
