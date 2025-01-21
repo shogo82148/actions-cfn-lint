@@ -34,7 +34,7 @@ Optional. Filtering mode for the reviewdog command \[`added`,`diff_context`,`fil
 
 ### `fail_level`
 
-Optional. Exit with code 1 if it finds at least 1 issue with severity greater than or equal to the givin level. \[`none`,`any`,`info`,`warning`,`error`\]. Default is `none`.
+Optional. Exit with code 1 if it finds at least 1 issue with severity greater than or equal to the given level. \[`none`,`any`,`info`,`warning`,`error`\]. Default is `none`.
 
 ### `reviewdog_flags`
 
