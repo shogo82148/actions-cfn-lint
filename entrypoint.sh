@@ -27,7 +27,7 @@ git config --global --add safe.directory "${PWD}" || exit 1
 # INPUT_REVIEWDOG_FLAGS is intentionally not quoted:
 # shellcheck disable=SC2086
 reviewdog \
-    -efm='%f:%l:%c:%*[0-9]:%*[0-9]:%t%n:%m' \
+    -efm='%f:%l:%c:%e:%k:%t%n:%m' \
     -name="${INPUT_TOOL_NAME}" \
     -reporter="${INPUT_REPORTER}" \
     -filter-mode="${INPUT_FILTER_MODE}" \
