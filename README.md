@@ -32,9 +32,9 @@ The default value is `github-pr-check`.
 
 Optional. Filtering mode for the reviewdog command \[`added`,`diff_context`,`file`,`nofilter`\]. Default is `added`.
 
-### `fail_on_error`
+### `fail_level`
 
-Optional. Exit code for reviewdog when errors are found \[`true`,`false`\]. Default is `false`.
+Optional. Exit with code 1 if it finds at least 1 issue with severity greater than or equal to the givin level. \[`none`,`any`,`info`,`warning`,`error`\]. Default is `none`.
 
 ### `reviewdog_flags`
 
@@ -60,9 +60,14 @@ There is no output.
   cfn_lint_args: "**/*.yaml **/*.yml **/*.json"
 ```
 
-See [.github/workflows/build.yml](.github/workflows/build.yml) for more examples.
+See [.github/workflows/test.yml](.github/workflows/test.yml) for more examples.
 
 ## Migrate to v1 from v2
 
 - `args` input is removed. use `cfn_lint_args` instead of it.
 - the default of `cfn_lint_args` is now `""`. To have the same behavior as v1, please specify `"**/*.yaml **/*.yml **/*.json"`.
+
+## Migrate to v4 from v2 and v3
+
+- `fail_on_error` input is removed. use `fail_level` instead of it.
+- the default of `fail_level` is now `none`.
