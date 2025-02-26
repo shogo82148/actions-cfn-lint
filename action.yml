@@ -8,8 +8,8 @@ inputs:
     default: "${{ github.token }}"
   level:
     description: "Report level for reviewdog [info,warning,error]"
-    required: true
-    default: "error"
+    required: false
+    default: ""
   tool_name:
     description: "Tool name to use for reviewdog reporter"
     required: true
