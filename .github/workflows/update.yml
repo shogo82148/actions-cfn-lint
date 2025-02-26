@@ -21,9 +21,7 @@ jobs:
           cp requirements.txt requirements.old.txt
           make requirements
 
-          # boto3 and botocore are updated very often, so ignore them
-          diff <(grep -v -E 'boto(3|core)' requirements.old.txt) \
-            <(grep -v -E 'boto(3|core)' requirements.txt) && true
+          diff requirements.old.txt requirements.txt && true
           echo "result=$?" >> "$GITHUB_OUTPUT"
           rm requirements.old.txt
 
