@@ -20,7 +20,7 @@ Optional. Tool name to use for reviewdog reporter. Useful when running multiple 
 
 ### `level`
 
-Optional. Report level for reviewdog \[`info`, `warning`, `error`\].
+Optional. Report level for reviewdog \[`info`, `warning`, `error`\]. Default is "".
 It's same as `-level` flag of reviewdog.
 
 ### `reporter`
