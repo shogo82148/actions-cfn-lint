@@ -3,7 +3,7 @@ attrs==24.2.0
 aws-sam-translator==1.95.0
 boto3==1.35.43
 botocore==1.35.43
-cfn-lint==1.32.3
+cfn-lint==1.32.4
 jmespath==1.0.1
 jsonpatch==1.33
 jsonpointer==3.0.0
