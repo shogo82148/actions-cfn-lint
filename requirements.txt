@@ -7,7 +7,7 @@ cfn-lint==1.35.3
 jmespath==1.0.1
 jsonpatch==1.33
 jsonpointer==3.0.0
-jsonschema==4.23.0
+jsonschema==4.24.0
 jsonschema-specifications==2025.4.1
 mpmath==1.3.0
 networkx==3.4.2
