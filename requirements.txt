@@ -1,13 +1,13 @@
 annotated-types==0.7.0
 attrs==25.3.0
 aws-sam-translator==1.99.0
-boto3==1.39.4
-botocore==1.39.4
+boto3==1.39.8
+botocore==1.39.8
 cfn-lint==1.38.0
 jmespath==1.0.1
 jsonpatch==1.33
 jsonpointer==3.0.0
-jsonschema==4.24.0
+jsonschema==4.24.1
 jsonschema-specifications==2025.4.1
 mpmath==1.3.0
 networkx==3.5
