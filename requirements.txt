@@ -10,7 +10,7 @@ jsonpointer==3.0.0
 jsonschema==4.25.1
 jsonschema-specifications==2025.9.1
 mpmath==1.3.0
-networkx==3.5
+networkx==3.6
 pydantic==2.12.4
 pydantic_core==2.41.5
 python-dateutil==2.9.0.post0
