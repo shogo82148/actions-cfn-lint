@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
 
       - name: update requirements.txt
         id: update
@@ -29,7 +29,7 @@ jobs:
 
       - name: Generate token
         id: generate_token
-        uses: shogo82148/actions-github-app-token@7ed70a12e0d77c0e3c946ef4d093e6d17f402935 # v1.0.3
+        uses: shogo82148/actions-github-app-token@e3b5eeb7dbe0eb2703b0847ece727b8c2122b2b5 # v1.1.0
 
       - name: commit and create a pull request
         if: ${{ steps.update.outputs.result == '1' }}
