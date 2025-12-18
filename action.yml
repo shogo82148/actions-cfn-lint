@@ -4,47 +4,51 @@ author: "ICHINOSE Shogo"
 inputs:
   github_token:
     description: "set secrets.GITHUB_TOKEN or github.token"
+    required: true
     default: "${{ github.token }}"
   level:
     description: "Report level for reviewdog [info,warning,error]"
-    default: "error"
+    required: false
+    default: ""
   tool_name:
     description: "Tool name to use for reviewdog reporter"
+    required: true
     default: "cfn-lint"
   reporter:
     description: |
       Reporter of reviewdog command [github-pr-check,github-pr-review].
       Default is github-pr-check.
       github-pr-review can use Markdown and add a link to rule page in reviewdog reports.
+    required: true
     default: "github-pr-check"
   filter_mode:
     description: |
       Filtering for the reviewdog command [added,diff_context,file,nofilter].
       Default is added.
+    required: true
     default: "added"
-  fail_on_error:
+  fail_level:
     description: |
-      Exit code for reviewdog when errors are found [true,false]
-      Default is `false`.
-    default: "false"
+      Exit with code 1 if it finds at least 1 issue with severity greater than or equal to the given level. [none,any,info,warning,error].
+      Default is `none`.
+    required: true
+    default: "none"
   reviewdog_flags:
     description: "Additional reviewdog flags"
+    required: false
     default: ""
   cfn_lint_args:
     description: "override args for cfn-lint"
+    required: false
     default: ""
-  args:
-    description: "args for cfn-lint"
-    default: ""
-    deprecationMessage: "use cfn_lint_args instead"
+  working_directory:
+    description: "working directory relative to root directory"
+    required: false
+    default: "."
 outputs: {}
 branding:
   icon: "check-circle"
   color: "orange"
 runs:
   using: "docker"
-  image: "docker://ghcr.io/shogo82148/actions-cfn-lint:1.92.0"
-  args:
-    - "**/*.yaml"
-    - "**/*.yml"
-    - "**/*.json"
+  image: "Dockerfile"

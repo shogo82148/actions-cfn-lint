@@ -13,12 +13,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
 
       - name: update requirements.txt
         id: update
         run: |
-          mv requirements.txt requirements.old.txt
+          cp requirements.txt requirements.old.txt
           make requirements
 
           # boto3 and botocore are updated very often, so ignore them
@@ -29,11 +29,11 @@ jobs:
 
       - name: Generate token
         id: generate_token
-        uses: shogo82148/actions-github-app-token@v1
+        uses: shogo82148/actions-github-app-token@e3b5eeb7dbe0eb2703b0847ece727b8c2122b2b5 # v1.1.0
 
       - name: commit and create a pull request
         if: ${{ steps.update.outputs.result == '1' }}
-        uses: shogo82148/actions-commit-and-create-pr@v1
+        uses: shogo82148/actions-commit-and-create-pr@b1322fe9da4037e9720e34ea221997cffcd3498d # v1.1.4
         with:
           github-token: ${{ steps.generate_token.outputs.token }}
           commit-message: "auto update dependencies"

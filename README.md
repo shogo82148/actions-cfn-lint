@@ -20,7 +20,7 @@ Optional. Tool name to use for reviewdog reporter. Useful when running multiple 
 
 ### `level`
 
-Optional. Report level for reviewdog \[`info`, `warning`, `error`\].
+Optional. Report level for reviewdog \[`info`, `warning`, `error`\]. Default is "".
 It's same as `-level` flag of reviewdog.
 
 ### `reporter`
@@ -32,18 +32,21 @@ The default value is `github-pr-check`.
 
 Optional. Filtering mode for the reviewdog command \[`added`,`diff_context`,`file`,`nofilter`\]. Default is `added`.
 
-### `fail_on_error`
+### `fail_level`
 
-Optional. Exit code for reviewdog when errors are found \[`true`,`false`\]. Default is `false`.
+Optional. Exit with code 1 if it finds at least 1 issue with severity greater than or equal to the given level. \[`none`,`any`,`info`,`warning`,`error`\]. Default is `none`.
 
 ### `reviewdog_flags`
 
-Optional. Additional reviewdog flags
+Optional. Additional reviewdog flags. The default is "".
 
 ### `cfn_lint_args`
 
-Overrides the arguments for cfn-lint.
-The default value is `**/*.yaml **/*.yml **/*.json`.
+Optional. the arguments for cfn-lint. The default is "".
+
+### `working_directory`
+
+Optional. Directory to run the action on, from the repo root. The default is . ( root of the repository).
 
 ## Outputs
 
@@ -54,6 +57,17 @@ There is no output.
 ```yaml
 - name: minimum example
   uses: shogo82148/actions-cfn-lint@v1
+  cfn_lint_args: "**/*.yaml **/*.yml **/*.json"
 ```
 
-See [.github/workflows/build.yml](.github/workflows/build.yml) for more examples.
+See [.github/workflows/test.yml](.github/workflows/test.yml) for more examples.
+
+## Migrate to v1 from v2
+
+- `args` input is removed. use `cfn_lint_args` instead of it.
+- the default of `cfn_lint_args` is now `""`. To have the same behavior as v1, please specify `"**/*.yaml **/*.yml **/*.json"`.
+
+## Migrate to v4 from v2 or v3
+
+- `fail_on_error` input is removed. use `fail_level` instead of it.
+- the default of `fail_level` is now `none`.
