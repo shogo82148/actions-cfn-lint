@@ -1,9 +1,9 @@
 annotated-types==0.7.0
 attrs==25.4.0
 aws-sam-translator==1.107.0
-boto3==1.42.53
-botocore==1.42.53
-cfn-lint==1.44.0
+boto3==1.42.58
+botocore==1.42.58
+cfn-lint==1.45.0
 jmespath==1.1.0
 jsonpatch==1.33
 jsonpointer==3.0.0
