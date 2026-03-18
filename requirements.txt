@@ -1,6 +1,6 @@
 annotated-types==0.7.0
 attrs==25.4.0
-aws-sam-translator==1.107.0
+aws-sam-translator==1.108.0
 boto3==1.42.70
 botocore==1.42.70
 cfn-lint==1.47.0
@@ -10,7 +10,7 @@ jsonpointer==3.0.0
 jsonschema==4.26.0
 jsonschema-specifications==2025.9.1
 mpmath==1.3.0
-networkx==3.6.1
+networkx==3.6
 pydantic==2.12.5
 pydantic_core==2.41.5
 python-dateutil==2.9.0.post0
