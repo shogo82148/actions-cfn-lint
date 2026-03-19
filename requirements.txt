@@ -1,5 +1,5 @@
 annotated-types==0.7.0
-attrs==25.4.0
+attrs==26.1.0
 aws-sam-translator==1.108.0
 boto3==1.42.71
 botocore==1.42.71
