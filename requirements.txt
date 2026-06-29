@@ -16,7 +16,7 @@ pydantic_core==2.46.4
 python-dateutil==2.9.0.post0
 PyYAML==6.0.3
 referencing==0.37.0
-regex==2026.5.9
+regex==2026.6.28
 rpds-py==2026.5.1
 s3transfer==0.19.0
 six==1.17.0
