@@ -1,8 +1,8 @@
 annotated-types==0.7.0
 attrs==26.1.0
-aws-sam-translator==1.110.0
-boto3==1.43.38
-botocore==1.43.38
+aws-sam-translator==1.111.0
+boto3==1.43.39
+botocore==1.43.39
 cfn-lint==1.52.1
 jmespath==1.1.0
 jsonpatch==1.33
@@ -22,5 +22,5 @@ s3transfer==0.19.0
 six==1.17.0
 sympy==1.14.0
 typing-inspection==0.4.2
-typing_extensions==4.15.0
+typing_extensions==4.16.0
 urllib3==2.7.0
