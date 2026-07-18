@@ -39,3 +39,24 @@ jobs:
         with:
           github-token: ${{ steps.generate_token.outputs.token }}
           commit-message: "auto update dependencies"
+
+  reviewdog:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - uses: reviewdog/action-depup@99f7aecf3e4d06d5a3faf190dae5dc79ac530b5a # v1.6.5
+        id: depup
+        with:
+          file: Dockerfile
+          version_name: REVIEWDOG_VERSION
+          repo: reviewdog/reviewdog
+
+      - name: Generate token
+        id: generate_token
+        uses: shogo82148/actions-github-app-token@84232dc4d9bd875d4dd83e3e5c4705db1c98a997 # v1.3.1
+
+      - name: commit and create a pull request
+        uses: shogo82148/actions-commit-and-create-pr@b1322fe9da4037e9720e34ea221997cffcd3498d # v1.1.4
+        with:
+          github-token: ${{ steps.generate_token.outputs.token }}
+          commit-message: "update reviewdog to ${{ steps.depup.outputs.latest }}"
