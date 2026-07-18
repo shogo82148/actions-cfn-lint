@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -uex
+set -uexo pipefail
 
 # Set up variables.
 TAG="${INPUT_TAG:-${GITHUB_REF#refs/tags/}}" # v1.2.3
