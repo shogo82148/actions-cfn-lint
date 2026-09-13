@@ -5,7 +5,7 @@ COPY requirements.txt /requirements.txt
 RUN apk --no-cache add git bash && pip install --upgrade pip && pip install --no-cache -r /requirements.txt
 
 # install reviewdog
-ENV REVIEWDOG_VERSION=v0.21.0
+ENV REVIEWDOG_VERSION=v0.21.1
 RUN wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh | sh -s -- -b /usr/local/bin/ "$REVIEWDOG_VERSION"
 
 COPY entrypoint.sh /entrypoint.sh
