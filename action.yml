@@ -51,4 +51,4 @@ branding:
   color: "orange"
 runs:
   using: "docker"
-  image: 'docker://ghcr.io/shogo82148/actions-cfn-lint:v4.78.0@sha256:52f25b0545efb8d3c98ecd57395eb2e0c425f9102330a5f5da2385aa64c5750e'
+  image: 'docker://ghcr.io/shogo82148/actions-cfn-lint:v4.79.0@sha256:6ebbd60e9edb6c4d6b7ef19de24d960e03df54a3536e9b4f68c436b646227e1d'
