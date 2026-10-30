@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        uses: actions/checkout@v7.0.1
         with:
           persist-credentials: false
 
@@ -31,11 +31,11 @@ jobs:
 
       - name: Generate token
         id: generate_token
-        uses: shogo82148/actions-github-app-token@bf955a861ff7c9d64c86b567bac12d7baae5614a # v1.3.4
+        uses: shogo82148/actions-github-app-token@v1.3.4
 
       - name: commit and create a pull request
         if: ${{ steps.update.outputs.result == '1' }}
-        uses: shogo82148/actions-commit-and-create-pr@b1322fe9da4037e9720e34ea221997cffcd3498d # v1.1.4
+        uses: shogo82148/actions-commit-and-create-pr@v1.1.4
         with:
           github-token: ${{ steps.generate_token.outputs.token }}
           commit-message: "auto update dependencies"
@@ -43,8 +43,8 @@ jobs:
   reviewdog:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - uses: reviewdog/action-depup@99f7aecf3e4d06d5a3faf190dae5dc79ac530b5a # v1.6.5
+      - uses: actions/checkout@v7.0.1
+      - uses: reviewdog/action-depup@v1.6.5
         id: depup
         with:
           file: Dockerfile
@@ -53,10 +53,10 @@ jobs:
 
       - name: Generate token
         id: generate_token
-        uses: shogo82148/actions-github-app-token@bf955a861ff7c9d64c86b567bac12d7baae5614a # v1.3.4
+        uses: shogo82148/actions-github-app-token@v1.3.4
 
       - name: commit and create a pull request
-        uses: shogo82148/actions-commit-and-create-pr@b1322fe9da4037e9720e34ea221997cffcd3498d # v1.1.4
+        uses: shogo82148/actions-commit-and-create-pr@v1.1.4
         with:
           github-token: ${{ steps.generate_token.outputs.token }}
           commit-message: "update reviewdog to ${{ steps.depup.outputs.latest }}"
