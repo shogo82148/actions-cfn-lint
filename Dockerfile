@@ -1,4 +1,4 @@
-FROM python:3.14.10-alpine3.24@sha256:cfe4b5079e5852da965ae14f74a6e2b137ece05b918d27c575fb70de3c85db2b
+FROM python:3.15.1-alpine3.24@sha256:54448f67d7c31c39e5cdd3ea2d6382395ce142806c284425f8e897d78a0465b3
 
 # install cfn-lint
 COPY requirements.txt /requirements.txt
