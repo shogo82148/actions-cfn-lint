@@ -1,6 +1,6 @@
 cfn-lint==1.60.0
-jsonpatch==1.45
-jsonpointer==3.10
+jsonpatch==1.46
+jsonpointer==3.11
 mpmath==1.3.0
 networkx==3.7
 PyYAML==6.0.3
