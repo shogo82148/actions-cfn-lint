@@ -11,15 +11,15 @@ workflows:
         - 'shogo82148/actions-create-release@v1.9.3'
     '.github/workflows/reviewdog.yml':
         - 'actions/checkout@v7.0.1'
-        - 'reviewdog/action-actionlint@v1.83.0'
-        - 'reviewdog/action-shellcheck@v1.35.0'
+        - 'reviewdog/action-actionlint@v1.84.1'
+        - 'reviewdog/action-shellcheck@v1.35.1'
     '.github/workflows/test.yml':
         - 'actions/checkout@v7.0.1'
         - 'docker/setup-buildx-action@v4.4.1'
         - 'docker/setup-qemu-action@v4.4.0'
     '.github/workflows/update.yml':
         - 'actions/checkout@v7.0.1'
-        - 'reviewdog/action-depup@v1.6.5'
+        - 'reviewdog/action-depup@v1.6.7'
         - 'shogo82148/actions-commit-and-create-pr@v1.1.4'
         - 'shogo82148/actions-github-app-token@v1.3.4'
 dependencies:
@@ -43,14 +43,14 @@ dependencies:
         commit: 'sha1-faf6f474bcb6174125cfc569f0b2e24cbf03d496'
         owner_id: 3797062
         repo_id: 234927264
-    'reviewdog/action-actionlint@v1.83.0':
-        ref: 'v1.83.0'
-        commit: 'sha1-a7d35aaf8c309203a4ae861d32b7bd490baa7bf3'
+    'reviewdog/action-actionlint@v1.84.1':
+        ref: 'v1.84.1'
+        commit: 'sha1-ae857e78c1b42b3d0a49637181b09d3d56d402b4'
         owner_id: 48765237
         repo_id: 385059686
-    'reviewdog/action-depup@v1.6.5':
-        ref: 'v1.6.5'
-        commit: 'sha1-99f7aecf3e4d06d5a3faf190dae5dc79ac530b5a'
+    'reviewdog/action-depup@v1.6.7':
+        ref: 'v1.6.7'
+        commit: 'sha1-a03fa2103b273193becba8cca43a992b9173f5dc'
         owner_id: 48765237
         repo_id: 234837904
     'reviewdog/action-setup@d8a7baabd7f3e8544ee4dbde3ee41d0011c3a93f':
@@ -58,9 +58,9 @@ dependencies:
         commit: 'sha1-d8a7baabd7f3e8544ee4dbde3ee41d0011c3a93f'
         owner_id: 48765237
         repo_id: 286005511
-    'reviewdog/action-shellcheck@v1.35.0':
-        ref: 'v1.35.0'
-        commit: 'sha1-b4ffc0b2a69f857f82b74d1310cd3e62e932f9f7'
+    'reviewdog/action-shellcheck@v1.35.1':
+        ref: 'v1.35.1'
+        commit: 'sha1-950c9d71535c8c49e5c029c33a438ade63b9009c'
         owner_id: 48765237
         repo_id: 211116201
         uses:
