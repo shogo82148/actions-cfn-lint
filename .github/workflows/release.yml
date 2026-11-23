@@ -91,7 +91,15 @@ jobs:
         run: |
           MAJOR=$(cat .major-version)
           git switch "releases/$MAJOR" || git switch -c "releases/$MAJOR"
-          git merge -X theirs --no-ff --no-commit main
+          if ! git rev-parse --verify --quiet "refs/remotes/origin/releases/$MAJOR" > /dev/null; then
+            # actions-commit can't create commits on a branch that doesn't exist on GitHub.
+            # The branch points to a commit on main, so no unsigned commits are pushed.
+            git push origin "releases/$MAJOR"
+          fi
+          # git merge requires the committer identity even with --no-commit.
+          # It is not used for the merge commit, which actions-commit creates via the API.
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+            merge -X theirs --no-ff --no-commit main
       - uses: shogo82148/actions-commit@v1.3.0
         if: "!steps.bumpr.outputs.skip"
         with:
@@ -112,15 +120,19 @@ jobs:
           base-branch: "releases/${{ steps.update-major-version.outputs.major }}"
           commit-message: "bump ${{ steps.bumpr.outputs.next_version }}"
 
-      # Update MAJOR/MINOR tags
-      - name: update MAJOR/MINOR tags
+      # Create the version tag and update MAJOR/MINOR tags
+      - name: update tags
         if: "!steps.bumpr.outputs.skip"
         run: |
           MINOR="${TAG%.*}"   # v1.2
           MAJOR="${MINOR%.*}" # v1
+          # Create the version tag on the release branch, which uses the pre-built image.
+          # Otherwise, actions-create-release creates it on github.sha (main).
+          git tag "$TAG"
+          git push origin "$TAG"
           git tag -f "$MINOR"
-          git tag -f "$MAJOR"
           git push origin "$MINOR" --force
+          git tag -f "$MAJOR"
           git push origin "$MAJOR" --force
         env:
           TAG: ${{ steps.bumpr.outputs.next_version }}
