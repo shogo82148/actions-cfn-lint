@@ -9,7 +9,7 @@ on:
 
 jobs:
   release:
-    if: ${{ github.event.action != 'labeled' }}
+    if: github.event.action != 'labeled'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -25,7 +25,12 @@ jobs:
       # https://github.com/haya14busa/bump/blob/9ab5412f5d96eb624c7e8559acbb11330be9901a/main.go#L72
       - name: checkout to release branch
         run: |
-          git checkout -b "releases/$(cat .major-version)" "origin/releases/$(cat .major-version)"
+          MAJOR=$(cat .major-version)
+          if git rev-parse --verify --quiet "refs/remotes/origin/releases/$MAJOR" > /dev/null; then
+            git checkout -b "releases/$MAJOR" "origin/releases/$MAJOR"
+          else
+            echo "::notice::origin/releases/$MAJOR does not exist. Use the current HEAD instead."
+          fi
 
       # Bump version on merging Pull Requests with specific labels.
       # (bump:major,bump:minor,bump:patch)
@@ -39,29 +44,109 @@ jobs:
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v4.4.1
-        with:
-          use: true
 
       # build the Docker Image
       - name: build the Docker Image
-        if: "${{ !steps.bumpr.outputs.skip }}"
+        id: build
+        if: "!steps.bumpr.outputs.skip"
         run: |
-          git checkout main
-          ./.github/build.sh
+          git switch main
+
+          # Login to GHCR
+          printenv GITHUB_TOKEN | docker login ghcr.io --username "${GITHUB_REPOSITORY%/*}" --password-stdin
+
+          # Build and push multi-platform image
+          docker buildx build \
+              --platform linux/amd64,linux/arm64 \
+              --tag "ghcr.io/$GITHUB_REPOSITORY:$TAG" \
+              --push \
+              .
+          DIGEST=$(docker buildx imagetools inspect "ghcr.io/$GITHUB_REPOSITORY:$TAG" --format "{{json .Manifest}}" | jq -r '.digest')
+          docker logout ghcr.io
+
+          echo "digest=$DIGEST" >> "$GITHUB_OUTPUT"
         env:
           GITHUB_TOKEN: ${{ github.token }}
-          INPUT_TAG: ${{ steps.bumpr.outputs.next_version }}
+          TAG: ${{ steps.bumpr.outputs.next_version }}
+
+      # update the major version if major version is bumped
+      - name: update major version
+        id: update-major-version
+        if: "!steps.bumpr.outputs.skip"
+        run: |
+          MAJOR="${TAG%%.*}" # v1
+          echo "$MAJOR" > .major-version
+          echo "major=$MAJOR" >> "$GITHUB_OUTPUT"
+        env:
+          TAG: ${{ steps.bumpr.outputs.next_version }}
+      - uses: shogo82148/actions-commit@v1.3.0
+        if: "!steps.bumpr.outputs.skip"
+        with:
+          base-branch: main
+          commit-message: "bump major version to ${{ steps.update-major-version.outputs.major }}"
+
+      # merge main branch to release branch
+      - name: merge main to release branch
+        if: "!steps.bumpr.outputs.skip"
+        run: |
+          MAJOR=$(cat .major-version)
+          git switch "releases/$MAJOR" || git switch -c "releases/$MAJOR"
+          if ! git rev-parse --verify --quiet "refs/remotes/origin/releases/$MAJOR" > /dev/null; then
+            # actions-commit can't create commits on a branch that doesn't exist on GitHub.
+            # The branch points to a commit on main, so no unsigned commits are pushed.
+            git push origin "releases/$MAJOR"
+          fi
+          # git merge requires the committer identity even with --no-commit.
+          # It is not used for the merge commit, which actions-commit creates via the API.
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+            merge -X theirs --no-ff --no-commit main
+      - uses: shogo82148/actions-commit@v1.3.0
+        if: "!steps.bumpr.outputs.skip"
+        with:
+          base-branch: "releases/${{ steps.update-major-version.outputs.major }}"
+
+      # configure to use the pre-built image
+      - name: configure Docker to use pre-built image
+        if: "!steps.bumpr.outputs.skip"
+        run: |
+          git checkout main -- action.yml
+          perl -i -pe "s(image:\\s*[\"']?Dockerfile[\"']?)(image: 'docker://ghcr.io/$GITHUB_REPOSITORY:$TAG\\@$DIGEST')" action.yml
+        env:
+          TAG: ${{ steps.bumpr.outputs.next_version }}
+          DIGEST: ${{ steps.build.outputs.digest }}
+      - uses: shogo82148/actions-commit@v1.3.0
+        if: "!steps.bumpr.outputs.skip"
+        with:
+          base-branch: "releases/${{ steps.update-major-version.outputs.major }}"
+          commit-message: "bump ${{ steps.bumpr.outputs.next_version }}"
+
+      # Create the version tag and update MAJOR/MINOR tags
+      - name: update tags
+        if: "!steps.bumpr.outputs.skip"
+        run: |
+          MINOR="${TAG%.*}"   # v1.2
+          MAJOR="${MINOR%.*}" # v1
+          # Create the version tag on the release branch, which uses the pre-built image.
+          # Otherwise, actions-create-release creates it on github.sha (main).
+          git tag "$TAG"
+          git push origin "$TAG"
+          git tag -f "$MINOR"
+          git push origin "$MINOR" --force
+          git tag -f "$MAJOR"
+          git push origin "$MAJOR" --force
+        env:
+          TAG: ${{ steps.bumpr.outputs.next_version }}
 
       # Create release.
       - uses: shogo82148/actions-create-release@v1.9.3
-        if: "${{ !steps.bumpr.outputs.skip }}"
+        if: "!steps.bumpr.outputs.skip"
         with:
           tag_name: ${{ steps.bumpr.outputs.next_version }}
           release_name: Release ${{ steps.bumpr.outputs.next_version }}
           generate_release_notes: true
 
   release-check:
-    if: "${{ github.event.action == 'labeled' }}"
+    if: "github.event.action == 'labeled'"
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -76,7 +161,12 @@ jobs:
       # https://github.com/haya14busa/bump/blob/9ab5412f5d96eb624c7e8559acbb11330be9901a/main.go#L72
       - name: checkout to release branch
         run: |
-          git checkout -b "releases/$(cat .major-version)" "origin/releases/$(cat .major-version)"
+          MAJOR=$(cat .major-version)
+          if git rev-parse --verify --quiet "refs/remotes/origin/releases/$MAJOR" > /dev/null; then
+            git checkout -b "releases/$MAJOR" "origin/releases/$MAJOR"
+          else
+            echo "::notice::origin/releases/$MAJOR does not exist. Use the current HEAD instead."
+          fi
 
       - name: Post bumpr status comment
         uses: haya14busa/action-bumpr@v1.11.4

@@ -8,6 +8,7 @@ workflows:
         - 'docker/setup-buildx-action@v4.4.1'
         - 'docker/setup-qemu-action@v4.4.0'
         - 'haya14busa/action-bumpr@v1.11.4'
+        - 'shogo82148/actions-commit@v1.3.0'
         - 'shogo82148/actions-create-release@v1.9.3'
     '.github/workflows/reviewdog.yml':
         - 'actions/checkout@v7.0.1'
@@ -70,6 +71,11 @@ dependencies:
         commit: 'sha1-b1322fe9da4037e9720e34ea221997cffcd3498d'
         owner_id: 1157344
         repo_id: 443524796
+    'shogo82148/actions-commit@v1.3.0':
+        ref: 'v1.3.0'
+        commit: 'sha1-da64e98fcaa6a8b21c292aaadfdba41508c9d50b'
+        owner_id: 1157344
+        repo_id: 697018049
     'shogo82148/actions-create-release@v1.9.3':
         ref: 'v1.9.3'
         commit: 'sha1-c172624cc9dcd7e0a2211b7337e6860b882fc030'
